@@ -12,7 +12,9 @@ def index():
 @app.route('/api/getnoun/<string:input_phrase>/')
 def get_noun(input_phrase):
   print(input_phrase)
+  #stick textblob here
   api_response = 'hello'
+
   return api_response
 
 
