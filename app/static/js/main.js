@@ -60,13 +60,17 @@ recognition.onresult = function(event) {
           $('#text').text(speechText)
 
           var newId = 'img-' + count
+
+          img = '<img id=' + newId + ' src=' + imageLink + '>';
+          $( ".thumbs" ).append( img );
+          addToThumbnails(newId);
+          count++;
+
           $('.sb-img').attr({
             src: imageLink,
             id: newId
           })
-
-          addToThumbnails(newId)
-          count++
+          
 
           // update results array
           results.push({

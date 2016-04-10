@@ -76,9 +76,6 @@ window.onload = function() {
 
 function addToThumbnails(new_pic){
     pictureThumbnails.push(document.getElementById(new_pic));
-    // console.log(new_pic)
-    // console.log(document.getElementById(new_pic))
-    // console.log(pictureThumbnails)
 }
 
 function didntGetStream() {
@@ -112,6 +109,7 @@ function drawLoop( time ) {
     canvasContext.clearRect(0,0,WIDTH,HEIGHT);
     canvasContext.fillStyle = "#F6F6FF";
 
+    //make last element have current volume, shift values over
     audioData[audioData.length] = meter.volume;
     audioData.shift();
     // draw a bar based on the current volume
@@ -119,7 +117,7 @@ function drawLoop( time ) {
       canvasContext.fillRect(i, 0, 1, audioData[i]*HEIGHT);
     }
     for(var i = 0; i < pictureThumbnails.length; i++ ){
-      //draw pics?
+      //draw pics
       pictureThumbnailLocations[i] = pictureThumbnailLocations[i] - 1;
       canvasContext.drawImage(pictureThumbnails[i],pictureThumbnailLocations[i],0,50,50);
     }
