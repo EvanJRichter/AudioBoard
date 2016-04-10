@@ -5,7 +5,7 @@ from flask import jsonify, render_template, redirect, request, url_for
 from textblob import TextBlob
 
 import requests
- 
+
 @app.route('/timeline/')
 def show_timeline():
     link_array = [1,2,3,4]
@@ -31,7 +31,7 @@ def get_noun(input_phrase):
           print(word)
           return word
 
-  return "black screen"
+  return "black"
 
 
 @app.route('/api/getnoun')
