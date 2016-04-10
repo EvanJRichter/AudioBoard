@@ -6,12 +6,13 @@ body {
   font-weight: 300;
 }
 
-.filler {
-  height: 25px;
+/* dangerous hacky code */
+img {
+  height: 400px;
 }
 
-#img {
-  height: 400px;
+.filler {
+  height: 25px;
 }
 
 svg {
@@ -34,6 +35,7 @@ svg {
 
 .twtr{
 <<<<<<< HEAD
+<<<<<<< HEAD
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
   font-size: 50px;
@@ -50,6 +52,8 @@ svg {
   width: 400px;
   height: 400px;
 =======
+=======
+>>>>>>> master
     font-family: 'Dosis', sans-serif;
     font-weight: 700;
     font-size: 50px;
@@ -78,20 +82,42 @@ svg {
 .topic_title{
 
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+<<<<<<< HEAD
     font-size: 25px;
     font-weight: 500;
     padding: 7px;
 >>>>>>> origin/varun
+=======
+  font-size: 25px;
+  font-weight: 500;
+  padding: 7px;
+  /* font-family: 'Dosis', sans-serif; */
+  /* font-weight: 700; */
+  /* font-size: 50px; */
+  color: #293C33;
+  text-align: center;
+  z-index: 100;
+>>>>>>> master
 }
 
+.center-me {
+  margin: 0 auto;
+}
 
+.api_response_thumb{
+  width: 400px;
+  height: 400px;
+}
 
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
 
 
 =======
+=======
+>>>>>>> master
 .hvr-float {
   display: inline-block;
   vertical-align: middle;
@@ -127,4 +153,8 @@ svg {
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
   background-color: white;
 }
+<<<<<<< HEAD
 >>>>>>> origin/varun
+=======
+
+>>>>>>> master
