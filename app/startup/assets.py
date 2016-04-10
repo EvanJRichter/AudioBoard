@@ -3,11 +3,15 @@ from flask.ext.assets import Bundle, Environment
 from app.app_and_db import app, webassets
 
 js_libs = Bundle("js/jquery.min.js",
+                "js/jquery.collagePlus.min.js", 
+                "js/jquery.collageCaption.min.js", 
+                "js/jquery.removeWhitespace.min.js", 
                 "js/bootstrap.min.js",
                 "js/foundation.min.js",
                 "js/what-input.min.js",
                 "js/volume-meter.js",
                 "js/waveform-generator.js",
+
                  output="js/libs.js")
 
 js_main = Bundle("js/main.js",

@@ -98,7 +98,7 @@ function gotStream(stream) {
 
 //modified original code to give a waveform instead of a single bar
 function drawLoop( time ) {
-    //var WIDTH= $('#meter').height();
+    var HEIGHT= $('#meter').height();
     if (pictureThumbsLength != pictureThumbnails.length){
         //add to pic array
         loc = audioData.length;

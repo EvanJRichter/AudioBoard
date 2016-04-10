@@ -8,7 +8,6 @@ var count = 0
 // all the results from the audio stream
 // constains objects with the keyword, speechText, and imageLink for each phrase
 var results = []
-
 var recognition = new webkitSpeechRecognition()
 recognition.continuous = true
 
@@ -86,9 +85,69 @@ recognition.onresult = function(event) {
   }})
 }
 
-recognition.start();
 
-//Center canvas function
+//--------  button functions ----------- //
+
+$(document).ready(function() {
+  //$( "#recording" ).hide();
+  $( ".Collage" ).css("visibility", "hidden");
+  $( "#recording" ).css("visibility", "hidden");
+
+  $( "#start" ).click(function() {
+    recognition.start();
+    $( this ).hide();
+    $( "#recording" ).css("visibility", "visible");
+  });
+
+  $( "#stop" ).click(function() {
+    recognition.continuous = false
+    recognition.stop();
+
+    //show other stuff, hide original stuff
+    console.log("done!");
+    $(  "#recording" ).hide();
+    $( ".Collage" ).css("visibility", "visible");
+
+  });
+});
+
+
+//--------  collagePlus javascript functions ----------- //
+
+
+// All images need to be loaded for this plugin to work so
+    // we end up waiting for the whole window to load in this example
+    $(window).load(function () {
+        $(document).ready(function(){
+            collage();
+            $('.Collage').collageCaption();
+        });
+    });
+
+
+    // Here we apply the actual CollagePlus plugin
+    function collage() {
+        $('.Collage').removeWhitespace().collagePlus(
+            {
+                'fadeSpeed'     : 2000,
+                'targetHeight'  : 200
+            }
+        );
+    };
+
+    // This is just for the case that the browser window is resized
+    var resizeTimer = null;
+    $(window).bind('resize', function() {
+        // hide all the images until we resize them
+        $('.Collage .Image_Wrapper').css("opacity", 0);
+        // set a timer to re-apply the plugin
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(collage, 200);
+    });
+
+
+//--------  Center canvas function ----------- //
+
 (function() {
   var canvas = document.getElementById('meter')
   var context = canvas.getContext('2d')
