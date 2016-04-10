@@ -40,17 +40,17 @@ window.onload = function() {
 
     // grab our canvas
   canvasContext = document.getElementById( "meter" ).getContext("2d");
-  
+
     // monkeypatch Web Audio
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-  
+
     // grab an audio context
     audioContext = new AudioContext();
 
     // Attempt to get audio input
     try {
         // monkeypatch getUserMedia
-        navigator.getUserMedia = 
+        navigator.getUserMedia =
           navigator.getUserMedia ||
           navigator.webkitGetUserMedia ||
           navigator.mozGetUserMedia;
@@ -76,9 +76,9 @@ window.onload = function() {
 
 function addToThumbnails(new_pic){
     pictureThumbnails.push(document.getElementById(new_pic));
-    console.log(new_pic)
-    console.log(document.getElementById(new_pic))
-    console.log(pictureThumbnails)
+    // console.log(new_pic)
+    // console.log(document.getElementById(new_pic))
+    // console.log(pictureThumbnails)
 }
 
 function didntGetStream() {
@@ -99,7 +99,7 @@ function gotStream(stream) {
     drawLoop();
 }
 
-//modified original code to give a waveform instead of a single bar 
+//modified original code to give a waveform instead of a single bar
 function drawLoop( time ) {
     //var WIDTH= $('#meter').height();
     if (pictureThumbsLength != pictureThumbnails.length){
