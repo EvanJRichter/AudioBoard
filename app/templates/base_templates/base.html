@@ -10,14 +10,12 @@
         <title>TWTR</title>
     </head>
     <body>
-        <div class="container main">
-            {% block main %}{% endblock -%}
-            {% assets "js_libs" %}
-            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-            {% endassets %}
-            {% assets "js_main" %}
-            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-            {% endassets %}
-        </div>
+        {% block main %}{% endblock -%}
+        {% assets "js_libs" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        {% assets "js_main" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
     </body>
 </html>
