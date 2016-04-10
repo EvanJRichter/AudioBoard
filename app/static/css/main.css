@@ -6,6 +6,14 @@ body {
   font-weight: 300;
 }
 
+.filler {
+  height: 25px;
+}
+
+#img {
+  height: 400px;
+}
+
 svg {
   display: block;
   margin:auto;
@@ -31,14 +39,14 @@ svg {
     color: #293C33;
     text-align: center;
     z-index: 100;
-    
+
 }
 
 /* ------------------------------section for top 10 topics and tweets----------------------*/
 .row{
     background-color: #F7F7F7;
     font-family: 'Dosis', sans-serif;
-    
+
 }
 
 .section_title{
@@ -47,11 +55,11 @@ svg {
     color: #293C33;
     padding:20px;
     text-align: center;
-    
+
 }
 
 .topic_title{
-    
+
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 25px;
     font-weight: 500;
@@ -84,7 +92,7 @@ svg {
   transition-property: transform;
   transition-timing-function: ease-out;
   padding:0px 5px 10px 15px;
-  
+
 }
 .hvr-float:hover,
 .hvr-float:focus,
@@ -95,7 +103,7 @@ svg {
 
 /* Fade */
 .hvr-fade {
-  
+
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   overflow: hidden;
@@ -103,7 +111,7 @@ svg {
   transition-duration: 0.3s;
   -webkit-transition-property: color, background-color;
   transition-property: color, background-color;
-  
+
 }
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
   background-color: white;
