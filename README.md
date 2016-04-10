@@ -4,8 +4,12 @@
 
 1. Install Pip. You'll need this if you ever use Python. https://pip.pypa.io/en/stable/installing/
 2. Run pip install -r requirements.txt
+<<<<<<< HEAD
 	pip install -U textblob
 	python -m textblob.download_corpora lite
+=======
+//also install textblob
+>>>>>>> master
 3. Run python runserver.py
 4. Navigate to http://127.0.0.1:9001/
 

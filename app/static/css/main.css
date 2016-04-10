@@ -63,6 +63,7 @@ svg {
 
 }
 
+<<<<<<< HEAD
 /* ------------------------------section for top 10 topics and tweets----------------------*/
 .row{
     background-color: #F7F7F7;
@@ -152,6 +153,10 @@ svg {
 }
 .hvr-fade:hover, .hvr-fade:focus, .hvr-fade:active {
   background-color: white;
+=======
+.thumbs {
+    visibility: hidden;
+>>>>>>> master
 }
 <<<<<<< HEAD
 >>>>>>> origin/varun
