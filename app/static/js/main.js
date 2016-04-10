@@ -2,7 +2,12 @@ var imageSearchBaseURL = 'https://www.googleapis.com/customsearch/v1'
 var cx = '009967352923164700190:bh01lm5iclm'
 var apiKey = 'AIzaSyAe2MVdSPyvFehxCdGvrrp98VIL5KeMC_A'
 
+// used for generating unique ids for pictures/thumbnails on waveform
 var count = 0
+
+// all the results from the audio stream
+// constains objects with the keyword, speechText, and imageLink for each phrase
+var results = []
 
 var recognition = new webkitSpeechRecognition()
 recognition.continuous = true
@@ -26,8 +31,16 @@ recognition.onresult = function(event) {
       // if no keyword was found, set the picture to black
       // this saves a request to the google image search api
       if (keyword === 'black') {
-        $('#img').attr('src', 'http://a.tile.stamen.com/toner/12/653/1583.png')
+        var blackImage = 'http://a.tile.stamen.com/toner/12/653/1583.png'
+        $('#img').attr('src', blackImage)
         $('#text').text(speechText)
+
+        // update results array
+        results.push({
+          keyword: keyword,
+          speechText: speechText,
+          imageLink: blackImage
+        })
       } else {
         // make a request to get the first google image result with the given keyword
         $.ajax({
@@ -54,6 +67,13 @@ recognition.onresult = function(event) {
 
           addToThumbnails(newId)
           count++
+
+          // update results array
+          results.push({
+            keyword: keyword,
+            speechText: speechText,
+            imageLink: imageLink
+          })
         })
         .fail(function(error) {
           console.log('error', error)
