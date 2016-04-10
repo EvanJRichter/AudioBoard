@@ -23,8 +23,6 @@ recognition.onresult = function(event) {
 
   // make a request to get the keyword from speechText
   $.ajax({
-<<<<<<< HEAD
-<<<<<<< HEAD
     url: url,
     success: function(result){
       console.log(result)
@@ -68,13 +66,7 @@ recognition.start();
 })();
 
 
-
-
-
-
-=======
-=======
->>>>>>> master
+  $.ajax({
     url: '/api/getnoun/' + speechText,
     success: function(keyword){
 
@@ -132,12 +124,8 @@ recognition.start();
         })
       }
   }})
-}
 
-<<<<<<< HEAD
-recognition.start()
->>>>>>> origin/varun
-=======
+
 recognition.start();
 
 //Center canvas function
@@ -164,4 +152,3 @@ recognition.start();
     // do your drawing stuff here
   }
 })()
->>>>>>> master
