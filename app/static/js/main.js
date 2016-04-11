@@ -133,8 +133,9 @@ recognition.onresult = function(event) {
 
 $(document).ready(function() {
   //$( "#recording" ).hide();
-  $( ".Collage" ).css("visibility", "hidden");
   $( "#recording" ).css("visibility", "hidden");
+
+  initFancyBox();
 
   $( "#start" ).click(function() {
     recognition.start();
@@ -145,32 +146,31 @@ $(document).ready(function() {
   $( "#stop" ).click(function() {
     recognition.continuous = false
     recognition.stop();
+    timeline(results);
 
     //show other stuff, hide original stuff
     console.log("done!");
     console.log('results:', results)
-    $(  "#recording" ).hide();
-    $( ".Collage" ).css("visibility", "visible");
 
+    $(  "#recording" ).hide();
+    $("#btns").removeClass("hide");
+    $("#collage-btn").click(function() {
+        $(".Collage").removeClass("hide");
+          collage();
+          $('.Collage').collageCaption();
+    })
+    $("#timeline-btn").click(function() {
+        $(".Collage").addClass("hide");
+    })
   });
 });
 
 
 //--------  collagePlus javascript functions ----------- //
 
-
-// All images need to be loaded for this plugin to work so
-    // we end up waiting for the whole window to load in this example
-    $(window).load(function () {
-        $(document).ready(function(){
-            collage();
-            $('.Collage').collageCaption();
-        });
-    });
-
-
     // Here we apply the actual CollagePlus plugin
     function collage() {
+        console.log("collage");
         $('.Collage').removeWhitespace().collagePlus(
             {
                 'fadeSpeed'     : 2000,
@@ -215,3 +215,46 @@ $(document).ready(function() {
     // do your drawing stuff here
   }
 })()
+
+
+//--------  Timeline javascript functions ----------- //
+
+
+// All images need to be loaded for this plugin to work so
+    // we end up waiting for the whole window to load in this example
+
+  function initFancyBox() {
+    $(".fancybox").fancybox({
+        maxWidth: 800,
+        nextSpeed: 200,
+        nextEffect: 'fade',
+        prevEffect: 'fade',
+        helpers: {
+          thumbs: {
+            width: 50,
+            height: 50
+          }
+        }
+      });
+  }
+
+    // Here we apply the actual CollagePlus plugin
+  function timeline(results) {
+    if (results.length == 0)
+      return
+
+    $('#timeline-btn').attr("href", results[0].imageLink)
+    $('#timeline-btn').attr("title", results[0].speechText)
+
+    var text = "";
+    for (i=1; i < results.length; i++) {
+      text += "<a class=\"fancybox\" href=" + results[i].imageLink + " rel=\"timeline_gallery\" title=" + results[i].speechText + "></a>";
+    }
+    console.log(text);
+
+    $('.Timeline').html(text)
+  };
+
+
+
+

@@ -11,7 +11,8 @@ js_libs = Bundle("js/jquery.min.js",
                 "js/what-input.min.js",
                 "js/volume-meter.js",
                 "js/waveform-generator.js",
-
+                "js/jquery.fancybox.js",
+                "js/jquery.fancybox-thumbs.js",
                  output="js/libs.js")
 
 js_main = Bundle("js/main.js",
@@ -20,7 +21,8 @@ js_main = Bundle("js/main.js",
 
 css_libs = Bundle("css/bootstrap.css",
                   "css/font-awesome.css",
-                  "css/foundation.min.css",
+                  "css/jquery.fancybox.css",
+                  "css/jquery.fancybox-thumbs.css",                  
                   output="css/libs.css")
 
 css_main = Bundle("css/main.css",
