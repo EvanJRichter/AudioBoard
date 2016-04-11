@@ -6,10 +6,6 @@ from textblob import TextBlob
 
 import requests
 
-@app.route('/timeline/')
-def show_timeline():
-    return render_template('pages/timeline.html', itemsCount=2)
-
 @app.route('/')
 def index():
   return render_template('pages/home_page.html')
