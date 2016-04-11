@@ -8,6 +8,62 @@ var count = 0
 // all the results from the audio stream
 // constains objects with the keyword, speechText, and imageLink for each phrase
 var results = []
+
+/**
+ * Stores the image link for the given keyword in localstorage
+ * Saves requests to the google search api and should load faster
+ * @param {String} keyword   [keyword/key for cache]
+ * @param {String} imageLink [link to picture for given keyword/value for cache]
+ */
+function setCache(keyword, imageLink) {
+  var cache = JSON.parse(localStorage.getItem('cache'))
+  cache[keyword] = imageLink
+  localStorage.setItem('cache', JSON.stringify(cache))
+}
+
+/**
+ * Retrieves the image link for the given keyword
+ * @param  {String} keyword [keyword/key for cache]
+ * @return {String}         [link to picture for given keyword/value for cache]
+ */
+function getCache(keyword) {
+  var cache = JSON.parse(localStorage.getItem('cache'))
+  return cache[keyword]
+}
+
+/**
+ * Creates and appends a thumbnail to the waveform
+ * @param  {String} newId     [id for the img tag]
+ * @param  {String} imageLink [link to picture]
+ */
+function createThumbnail(newId, imageLink) {
+  var $thumbnail = $('<img />', {
+    id: newId,
+    src: imageLink
+  })
+  $('.thumbs').append($thumbnail)
+  addToThumbnails(newId)
+}
+
+/**
+ * Updates the current live view with the new phrase and image
+ * @param  {String} speechText [a phrase detected from the user]
+ * @param  {String} imageLink  [link to picture for the given speechText/keyword]
+ */
+function updateCurrentView(speechText, imageLink) {
+  $('#text').text(speechText)
+  $('.sb-img').attr('src', imageLink)
+}
+
+// initialize cache if it doesn't already exist
+if (!localStorage.getItem('cache')) {
+  localStorage.setItem('cache', JSON.stringify({}))
+}
+
+// set the default black image for the keyword 'black'
+// (what's returned from TextBlob if no keyword is found)
+setCache('black', 'http://a.tile.stamen.com/toner/12/653/1583.png')
+
 var recognition = new webkitSpeechRecognition()
 recognition.continuous = true
 
@@ -27,18 +83,17 @@ recognition.onresult = function(event) {
 
       console.log('keyword', keyword)
 
-      // if no keyword was found, set the picture to black
-      // this saves a request to the google image search api
-      if (keyword === 'black') {
-        var blackImage = 'http://a.tile.stamen.com/toner/12/653/1583.png'
-        $('#img').attr('src', blackImage)
-        $('#text').text(speechText)
+      var cachedImageLink = getCache(keyword)
+      var newId = 'img-' + count
 
-        // update results array
+      if (cachedImageLink) {
+        updateCurrentView(speechText, cachedImageLink)
+        createThumbnail(newId, cachedImageLink)
+        count++
         results.push({
           keyword: keyword,
           speechText: speechText,
-          imageLink: blackImage
+          imageLink: cachedImageLink
         })
       } else {
         // make a request to get the first google image result with the given keyword
@@ -56,22 +111,10 @@ recognition.onresult = function(event) {
         })
         .done(function(data) {
           var imageLink = data.items[0].link
-          $('#text').text(speechText)
-
-          var newId = 'img-' + count
-
-          img = '<img id=' + newId + ' src=' + imageLink + '>';
-          $( ".thumbs" ).append( img );
-          addToThumbnails(newId);
-          count++;
-
-          $('.sb-img').attr({
-            src: imageLink,
-            id: newId
-          })
-          
-
-          // update results array
+          updateCurrentView(speechText, imageLink)
+          createThumbnail(newId, imageLink)
+          count++
+          setCache(keyword, imageLink)
           results.push({
             keyword: keyword,
             speechText: speechText,
@@ -105,6 +148,7 @@ $(document).ready(function() {
 
     //show other stuff, hide original stuff
     console.log("done!");
+    console.log('results:', results)
     $(  "#recording" ).hide();
     $( ".Collage" ).css("visibility", "visible");
 
