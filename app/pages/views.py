@@ -8,8 +8,7 @@ import requests
 
 @app.route('/timeline/')
 def show_timeline():
-    link_array = [1,2,3,4]
-    return render_template('pages/slider.html', my_list=link_array)
+    return render_template('pages/timeline.html', itemsCount=2)
 
 @app.route('/')
 def index():
