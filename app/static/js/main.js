@@ -134,6 +134,7 @@ recognition.onresult = function(event) {
 $(document).ready(function() {
   //$( "#recording" ).hide();
   $( "#recording" ).css("visibility", "hidden");
+
   initFancyBox();
 
   $( "#start" ).click(function() {
@@ -150,33 +151,26 @@ $(document).ready(function() {
     //show other stuff, hide original stuff
     console.log("done!");
     console.log('results:', results)
+
     $(  "#recording" ).hide();
     $("#btns").removeClass("hide");
-    // $("#collage-btn").click(function() {
-    //     $(".Collage").removeClass("hide");
-    // })
-    // $("#timeline-btn").click(function() {
-    //     $(".Collage").addClass("hide");
-    // })
+    $("#collage-btn").click(function() {
+        $(".Collage").removeClass("hide");
+          collage();
+          $('.Collage').collageCaption();
+    })
+    $("#timeline-btn").click(function() {
+        $(".Collage").addClass("hide");
+    })
   });
 });
 
 
 //--------  collagePlus javascript functions ----------- //
 
-
-// All images need to be loaded for this plugin to work so
-    // we end up waiting for the whole window to load in this example
-    $(window).load(function () {
-        $(document).ready(function(){
-            collage();
-            $('.Collage').collageCaption();
-        });
-    });
-
-
     // Here we apply the actual CollagePlus plugin
     function collage() {
+        console.log("collage");
         $('.Collage').removeWhitespace().collagePlus(
             {
                 'fadeSpeed'     : 2000,
