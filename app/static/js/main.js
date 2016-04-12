@@ -185,7 +185,12 @@ $(document).ready(function() {
 
     // Here we apply the actual CollagePlus plugin
     function collage() {
+        var text="";
         console.log("collage");
+        for (i=0; i<results.length; i++) {
+            text += "<div class=\"Image_Wrapper\" <a><img src=\"" + results[i].imageLink + "\"></a></div>";
+        }
+        $('#collageImage').html(text)
         $('.Collage').removeWhitespace().collagePlus(
             {
                 'fadeSpeed'     : 2000,
