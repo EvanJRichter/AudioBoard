@@ -263,7 +263,7 @@ $(document).ready(function() {
 
     var text = "";
     for (i=1; i < results.length; i++) {
-      text += "<a class=\"fancybox\" href=" + results[i].imageLink + " rel=\"timeline_gallery\" title=" + results[i].speechText + "></a>";
+      text += "<a class=\"fancybox\" href=" + results[i].imageLink + " rel=\"timeline_gallery\" title=\"" + results[i].speechText + "\"></a>";
     }
     console.log(text);
 
