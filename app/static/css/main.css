@@ -47,7 +47,9 @@ svg {
     visibility: hidden;
 }
 
-
+#btns{
+  text-align:center;
+}
 
 
 .Collage{

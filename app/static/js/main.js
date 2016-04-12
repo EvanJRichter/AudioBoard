@@ -144,7 +144,6 @@ $(document).ready(function() {
   });
 
   $( "#stop" ).click(function() {
-    recognition.continuous = false
     recognition.stop();
     timeline(results);
 
@@ -152,8 +151,9 @@ $(document).ready(function() {
     console.log("done!");
     console.log('results:', results)
 
-    $(  "#recording" ).hide();
+    $( "#recording" ).css("visibility", "hidden");
     $("#btns").removeClass("hide");
+
     $("#collage-btn").click(function() {
         $(".Collage").removeClass("hide");
           collage();
@@ -162,7 +162,22 @@ $(document).ready(function() {
     $("#timeline-btn").click(function() {
         $(".Collage").addClass("hide");
     })
+    $("#restart-btn").click(function() {
+        //clears the results array and the images we've attached to the DOM
+        results = [];
+        clearThumbnails();
+        $('.thumbs').empty();
+
+        //and shows/hides the appropriate views
+        $(".Collage").addClass("hide");
+        $("#btns").addClass("hide");
+        updateCurrentView("", "");
+        //$( "#recording" ).css("visibility", "hidden");
+        $( "#start" ).show();
+
+    })
   });
+
 });
 
 
