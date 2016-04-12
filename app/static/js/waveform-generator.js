@@ -126,4 +126,7 @@ function drawLoop( time ) {
     rafID = window.requestAnimationFrame( drawLoop );
 }
 
-
+function clearThumbnails(){
+    var pictureThumbnails = new Array(0);
+    var pictureThumbnailLocations = new Array(0);
+}

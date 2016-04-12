@@ -3,28 +3,19 @@
 {% block main %}
 <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light|Indie+Flower|Dosis:600|Quicksand|Karla|Architects+Daughter|Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
 
-<div class ="twtr">SoundBoard</div>
-
-<input id = "start" type="submit" value="Start Recording"/>
-
-<div id="recording">
-	<!--<div id="meter-container" class="center-me"> -->
-	<canvas id="meter"></canvas>
-	<!-- </div> -->
-
-	<div class="container">
-		<input id = "stop" type="submit" value="Stop Recording"/>
-		<div class="filler"></div>
-		<img class="center-block sb-img" src="" height="400">
-		<div class="filler"></div>
-		<h4 class="text-center" id="text"></h4>
-	</div>
+<div class ="twtr">AudioBoard</div>
+<div style="text-align:center">
+	<button id="start" class="btn btn-primary" role="button">Start Recording</button>
 </div>
 
 <div id="btns" class="hide">
-	<a id="collage-btn" class="btn btn-primary" role="button">Collage</button>
+	<a id="collage-btn" class="btn btn-primary" role="button">Collage</a>
 	<a rel="timeline_gallery" id="timeline-btn" class="btn btn-primary sub-link fancybox" role="button">Timeline</a>
+	<button id="restart-btn" class="btn btn-primary" role="button">New Recording</button>
 </div>
+
+
+
 
 <!-- Insert images here and set the width/height -->
 <section class="Collage effect-parent hide">
@@ -32,9 +23,22 @@
 	<div class="Image_Wrapper"><a><img src="http://placehold.it/320x180/A7DBD8/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/320x300/E0E4CC/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/472x500/F38630/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/540x360/FA6900/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/800x600/ECD078/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/400x120/D95B43/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/300x300/C02942/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/320x500/542437/ffffff"></a></div><div class="Image_Wrapper" <a><img src="http://placehold.it/450x300/53777A/ffffff"></a></div>
 </section>
 
-<section class="Timeline effect-parent hide">
+<section class="Timeline effect-parent hide"></section>
 
-</section>
+<div id="recording">
+	<!--<div id="meter-container" class="center-me"> -->
+	<canvas id="meter"></canvas>
+	<!-- </div> -->
+
+	<div class="container" style="text-align:center">
+		<button id="stop" class="btn btn-primary" role="button">Stop Recording</button>
+		<div class="filler"></div>
+		<img class="center-block sb-img" src="" height="400">
+		<div class="filler"></div>
+		<h4 class="text-center" id="text"></h4>
+	</div>
+</div>
+
 
 <div class="thumbs" visibility="hidden" ></div>
 {% endblock %}
