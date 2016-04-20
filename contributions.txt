@@ -1,0 +1,13 @@
+AV Implementation 3 Group Contributions:
+
+Evan Richter:
+	-
+
+Chris Mathew:
+	- Worked on server-side keyword extraction. Also worked on enabling timeline view.
+
+Varun Munjeti:
+	- 
+
+Sheena Panthaplackel:
+	- 
