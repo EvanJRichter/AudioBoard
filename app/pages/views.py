@@ -1,9 +1,7 @@
 from app.pages.models import City, Response
 from datetime import datetime
-from flask import jsonify, render_template, redirect, request, url_for
+from flask import jsonify, render_template, redirect, url_for
 from textblob import TextBlob
-
-import requests
 
 @app.route('/')
 def index():
