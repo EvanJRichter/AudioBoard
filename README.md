@@ -1,4 +1,6 @@
-#AV Project
+#AudioBoard
+
+AudioBoard is an application written using Flask that takes live audio input (speech ideally) and creates a real time visualization of the input, utilizing google images and keyword detection to bring your words to life.
 
 **Development Guide:**
 
